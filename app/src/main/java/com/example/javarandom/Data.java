@@ -49,9 +49,6 @@ class Data {
             return this.result;
         }
 
-        //Log.d("arrayN", this.names.toString());
-
-
     }
 
 }
