@@ -6,14 +6,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-class Data {
+public class Data {
 
-    private ArrayList<String> names;
-    private ArrayList<String> actions;
-    private ArrayList<String> result;
+    private final ArrayList<String> names;
+    private final ArrayList<String> actions;
+    private final ArrayList<String> result;
     private String randomN;
     private String randomA;
+    private String name;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public Data() {
         this.names = new ArrayList<>(
@@ -23,19 +31,22 @@ class Data {
                 Arrays.asList("ow", "x", "om", "fb"));
 
         this.result = new ArrayList<>();
-        this.randomA = new String();
-        this.randomN = new String();
+        this.randomA = "";
+        this.randomN = "";
+
     }
 
     Random randomizer = new Random();
 
-    private ArrayList<String> addtoArray(){
+    private ArrayList<String> addtoArray() {
         this.randomN = this.names.get(randomizer.nextInt(this.names.size()));
-        this.randomA = this.actions.get(randomizer.nextInt(this.actions.size()));  this.result.add(randomN);
+        this.randomA = this.actions.get(randomizer.nextInt(this.actions.size()));
+        this.result.add(randomN);
         this.result.add(randomA);
         Log.d("name", this.result.toString());
         return this.result;
-    };
+    }
+
 
     public ArrayList<String> getRandomName() {
         if (!this.randomN.isEmpty() && !this.randomA.isEmpty()) {

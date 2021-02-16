@@ -1,5 +1,6 @@
 package com.example.javarandom;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,31 +15,55 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> result;
+    ActivityMainBinding binding;
+    Data names;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        names = new Data();
 
         setContentView(binding.getRoot());
 
         Button button = (Button) binding.goRandom;
 
-        Data names = new Data();
+        binding.name.setText("Rich");
 
-        View.OnClickListener buttonClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<String> theresults = names.getRandomName();
-                binding.name.setText(theresults.get(0));
-                binding.result.setText(theresults.get(1));
-                Log.d("theresults", theresults.toString());
-            }
-        };
+//        View.OnClickListener buttonClick = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ArrayList<String> theresults = names.getRandomName();
+//                binding.name.setText(theresults.get(0));
+//                binding.result.setText(theresults.get(1));
+//                Log.d("theresults", theresults.toString());
+//
+//            }
+//        };
 
-        button.setOnClickListener(buttonClick);
+//        button.setOnClickListener(buttonClick);
+
 
     }
+
+    public void randomit(View v){
+        ArrayList<String> theresults = names.getRandomName();
+        binding.name.setText(theresults.get(0));
+        binding.result.setText(theresults.get(1));
+        Log.d("theresults", theresults.toString());
+
+    }
+
+    public void gotoRandom(View v){
+        Intent sendtohistory = new Intent(v.getContext(), History.class);
+        startActivity(sendtohistory);
+
+    }
+
+
+
+
 }
