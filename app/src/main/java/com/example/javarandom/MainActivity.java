@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         names = new Data();
@@ -32,21 +31,6 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) binding.goRandom;
 
         binding.name.setText("Rich");
-
-//        View.OnClickListener buttonClick = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ArrayList<String> theresults = names.getRandomName();
-//                binding.name.setText(theresults.get(0));
-//                binding.result.setText(theresults.get(1));
-//                Log.d("theresults", theresults.toString());
-//
-//            }
-//        };
-
-//        button.setOnClickListener(buttonClick);
-
-
     }
 
     public void randomit(View v){

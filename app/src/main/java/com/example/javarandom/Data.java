@@ -15,13 +15,7 @@ public class Data {
     private String randomA;
     private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getName() {
-        return name;
-    }
 
     public Data() {
         this.names = new ArrayList<>(
@@ -34,6 +28,13 @@ public class Data {
         this.randomA = "";
         this.randomN = "";
 
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
     }
 
     Random randomizer = new Random();
