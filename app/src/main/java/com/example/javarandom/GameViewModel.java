@@ -10,27 +10,6 @@ import java.util.Random;
 
 public class GameViewModel extends ViewModel {
 
-//    private MutableLiveData<List<User>> users;
-//    public LiveData<List<User>> getUsers() {
-//        if (users == null) {
-//            users = new MutableLiveData<List<User>>();
-//            loadUsers();
-//        }
-//        return users;
-//    }
-//
-//    private void loadUsers() {
-//        // Do an asynchronous operation to fetch users.
-//    }
-
-//    private ArrayList<String> names;
-//    private ArrayList<String> actions;
-//    private ArrayList<String> result;
-//    private String randomN;
-//    private String randomA;
-//    private String name;
-
-
     private ArrayList<String> names = new ArrayList<String>(
                 Arrays.asList("a", "c", "y"));
 
@@ -40,11 +19,6 @@ public class GameViewModel extends ViewModel {
     private ArrayList<String> result = new ArrayList<>();
     private String randomA = "";
     private String randomN = "";
-
-
-//    private MutableLiveData<List<String>> names;
-//    private MutableLiveData<List<String>> actions;
-//    private MutableLiveData<List<String>> result;
 
 
     Random randomizer = new Random();

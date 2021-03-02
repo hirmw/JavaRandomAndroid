@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -23,17 +24,28 @@ public class GameFragment extends Fragment {
 
     FragmentGameBinding binding;
     ArrayList<String> result;
-    //Data names;
-    //GameViewModel viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+
+    private MutableLiveData<String> person;
+
+    public MutableLiveData<String> getPerson() {
+        if (person == null) {
+            person = new MutableLiveData<String>();
+        }
+        return person;
+    }
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-        //names = new Data();
        this.result = new ArrayList<>();
+       this.person = new MutableLiveData<String>();
+
+
+
 
     }
 
@@ -45,6 +57,11 @@ public class GameFragment extends Fragment {
 
         GameViewModel viewModel = new ViewModelProvider(this).get(GameViewModel.class);
 
+        // Create the observer which updates the UI.
+
+        person.observe(getViewLifecycleOwner(), Observer -> {
+            Log.d("hello", "hello");
+        });
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false);
         View view = binding.getRoot();
@@ -61,7 +78,8 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 //randomit(view);
                 result = viewModel.getRandomName();
-                binding.name.setText(result.get(0));
+                person.setValue(result.get(0));
+                binding.name.setText(person.getValue());
                 binding.result.setText(result.get(1));
             }
         });
@@ -85,15 +103,6 @@ public class GameFragment extends Fragment {
         return super.onOptionsItemSelected(item);
 
     }
-
-//    public void randomit(View v){
-//        ArrayList<String> theresults = names.getRandomName();
-//        binding.name.setText(theresults.get(0));
-//        binding.result.setText(theresults.get(1));
-//        Log.d("theresults", theresults.toString());
-//    }
-
-
 
 
 }
